@@ -1,0 +1,41 @@
+//There're two ways to solve this problem. 
+//All the codes are written in C Language. 
+
+//The first answer was copied directly from an online sourec. 
+//I just changed some variable names. 
+
+int findMaxConsecutiveOnes(int* nums, int numsSize){
+    
+    int max_1s = 0;
+    int con_1s = 0;
+    for(int i = 0; i < numsSize; i++){
+    	if (nums[i] == 0) 
+            con_1s = 0;
+        else{
+             con_1s++;
+             max_1s = fmax(max_1s, con_1s);
+        } 
+    }
+    return max_1s;
+}
+
+//The second answer was inspired by the first one, but changed by myself. 
+//There's one thing to be  noticed, con_1s should be innitialized in else statement. 
+//Or the previous result will be added to the con_1s if the next number is not 1. 
+
+//And I take the comparison out of the else statement. 
+int findMaxConsecutiveOnes(int* nums, int numsSize){
+    
+    int max_1s = 0;
+    int con_1s = 0;
+    for(int i = 0; i < numsSize; i++){
+        if (nums[i] == 1)
+            con_1s++;
+        else
+            con_1s = 0;
+        max_1s = fmax(max_1s, con_1s);   
+    }
+    return max_1s;
+}
+
+ 
